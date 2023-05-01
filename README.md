@@ -22,6 +22,7 @@ git clone https://github.com/OsamaAbbasi/simple-music-player-test.git
 2. Install the dependencies:
 
 ```
+cd simple-music-player-test
 npm install
 ```
 
