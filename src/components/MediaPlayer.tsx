@@ -3,7 +3,7 @@ import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import Video from 'react-native-video';
 import {BlurView} from '@react-native-community/blur';
 
-interface Props {
+interface MediaPlayerProps {
   song: {
     trackName: string;
     previewUrl: string;
@@ -11,7 +11,7 @@ interface Props {
   onSongEnd: () => void;
 }
 
-const MediaPlayer: React.FC<Props> = ({song, onSongEnd}) => {
+const MediaPlayer: React.FC<MediaPlayerProps> = ({song, onSongEnd}) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   playPause: {
-    fontSize: 50,
+    fontSize: 40,
   },
 });
 

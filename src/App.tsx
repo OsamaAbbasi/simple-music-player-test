@@ -3,19 +3,11 @@ import {TextInput, FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {searchArtist} from './api/api';
 import SongCard from './components/SongCard';
 import MediaPlayer from './components/MediaPlayer';
-
-interface Song {
-  trackId: number;
-  trackName: string;
-  artistName: string;
-  albumName: string;
-  artworkUrl100: string;
-  previewUrl: string;
-}
+import {SongInterface} from './interfaces/interfaces';
 
 const App: React.FC = () => {
-  const [songs, setSongs] = useState<Song[]>([]);
-  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const [songs, setSongs] = useState<SongInterface[]>([]);
+  const [currentSong, setCurrentSong] = useState<SongInterface | null>(null);
   const [playerVisible, setPlayerVisible] = useState<boolean>(false);
 
   const handleSearch = async (text: string) => {
@@ -25,7 +17,7 @@ const App: React.FC = () => {
     setPlayerVisible(false);
   };
 
-  const handleSongPress = (song: Song) => {
+  const handleSongPress = (song: SongInterface) => {
     setCurrentSong(song);
     setPlayerVisible(true);
   };
@@ -48,7 +40,7 @@ const App: React.FC = () => {
           <SongCard
             song={item}
             onPress={() => handleSongPress(item)}
-            isPlaying={currentSong && currentSong.trackId === item.trackId}
+            isPlaying={currentSong! && currentSong.trackId === item.trackId}
           />
         )}
         keyExtractor={item => item.trackId.toString()}

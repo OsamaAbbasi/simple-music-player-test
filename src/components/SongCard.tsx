@@ -1,20 +1,14 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {SongInterface} from '../interfaces/interfaces';
 
-interface Song {
-  trackName: string;
-  artistName: string;
-  collectionName: string;
-  artworkUrl100: string;
-}
-
-interface Props {
-  song: Song;
+interface SongCardProps {
+  song: SongInterface;
   onPress: () => void;
   isPlaying: boolean;
 }
 
-const SongCard: React.FC<Props> = ({song, onPress, isPlaying}) => {
+const SongCard: React.FC<SongCardProps> = ({song, onPress, isPlaying}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image style={styles.albumArt} source={{uri: song.artworkUrl100}} />
@@ -56,6 +50,7 @@ const styles = StyleSheet.create({
   },
   playingIndicator: {
     fontSize: 20,
+    marginRight: 25,
   },
 });
 
